@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './ProductCard.scss';
 
 export default function ProductCard({product}) {
