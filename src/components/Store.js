@@ -15,19 +15,14 @@ export default function Store() {
 
     const [productData, setProductData] = useState([]);
     const [page, setPage] = useState(1);
-    const [windowWidth, setWindowWidht] = useState(window.innerWidth);
-
-
-
 
     const handleNewPage = (newPage) => {
         setPage(newPage);
     }
 
-
     useEffect(() => {
         const loadProducts = async () => {
-            const productData = await fetchProducts(page, (windowWidth < 1000 ? 4 : 12));
+            const productData = await fetchProducts(page, (window.innerWidth < 1000 ? 4 : 12));
 
             const unsplash = createApi({
                 accessKey: process.env.REACT_APP_ACCESS_KEY,
