@@ -22,7 +22,7 @@ export default function Store() {
 
     useEffect(() => {
         const loadProducts = async () => {
-            const productData = await fetchProducts(page, (window.innerWidth < 1000 ? 4 : 12));
+            const productData = await fetchProducts(page, (window.innerWidth < 1000 ? 4 : 9));
 
             const unsplash = createApi({
                 accessKey: process.env.REACT_APP_ACCESS_KEY,

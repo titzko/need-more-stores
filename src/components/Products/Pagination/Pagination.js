@@ -33,7 +33,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
                 
                 {Array.from(Array(totalPages).keys()).map((element, index) => {
                     return (
-                        <div className={'nav-btn no-display-mobile' + ((currentPage == element + 1) ? ' current-page-btn' : '')}
+                        <div className={'nav-btn no-display-mobile' + ((currentPage === element + 1) ? ' current-page-btn' : '')}
                             onClick={() => { handleNewPageClick(element + 1) }} key={index} >
                             {element + 1}
                         </div>

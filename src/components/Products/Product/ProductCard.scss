@@ -38,3 +38,14 @@
     border-color: $green;
   }
 }
+
+
+
+@media (max-width: 796px) {
+
+  .product {
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: unset !important;
+  }
+}
