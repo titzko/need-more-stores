@@ -1,7 +1,7 @@
 Mock data from: https://www.mockaroo.com/
 JSON Server for a Mock-Api - https://github.com/typicode/json-server
 Bootstrap: https://getbootstrap.com/
-
+SCSS
 
 Start the React-APP: npm run start <- will start your api and your mock-api
 
