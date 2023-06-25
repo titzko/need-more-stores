@@ -8,3 +8,16 @@ Start the React-APP: npm run start <- will start your api and your mock-api
 
 
 Also statically hosted the data here: https://titzko.github.io/public_api/data/product_data.json
+
+
+https://github.com/unsplash/unsplash-js for the images
+
+
+
+
+
+
+
+
+
+

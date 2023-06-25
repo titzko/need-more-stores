@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import './Product.scss';
+import './ProductCard.scss';
 
-export default function Product({product}) {
+export default function ProductCard({product}) {
 
     
 
     return (
         <div className="product d-flex">
             <div>
-                <img src="https://via.placeholder.com/150" alt="product" />
+                <img src={product.imageUrl ? product.imageUrl : "https://via.placeholder.com/150"}    alt="product" />
             </div>
             <div className="product-info">
                 <h3 className="product-name">{product.product_name}</h3>

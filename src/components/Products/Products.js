@@ -1,8 +1,7 @@
 import './Products.scss';
 
-import Product from './Product/Product';
+import ProductCard from './Product/ProductCard';
 import Pagination from './Pagination/Pagination';
-import { useEffect } from 'react';
 
 export default function Products({ products, total, totalPages, currentPage,handleNewPage}) {
 
@@ -16,7 +15,7 @@ export default function Products({ products, total, totalPages, currentPage,hand
 
                 {products.map((product, index) => {
                     return (
-                        <Product key={index} product={product} />
+                        <ProductCard key={index} product={product} />
                     )
                 })}
 
