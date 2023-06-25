@@ -1,41 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Products.scss';
 
-import ProductCard from './Product/ProductCard';
-import Pagination from './Pagination/Pagination';
+import ProductCard from './ProductCard/ProductCard';
+import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner';
 
-export default function Products({ products, total, totalPages, currentPage, handleNewPage }) {
+export default function Products({ products, totalPages, currentPage, handleNewPage }) {
 
 
-    const [loadedImages, setLoadedImages] = useState(0);
-
-    const handleImageLoading = () => {
-        setLoadedImages(prev => prev + 1)
-    }
+    const [pageLoaded, setPageLoaded] = useState(false);
 
 
-    function onPageChange(page) {
-        setLoadedImages(0);
+    useEffect(() => {
+        setTimeout(() => {
+            setPageLoaded(true);
+        }, 650)
+
+    }, [pageLoaded]);
+
+
+    const updatePage = (page) => {
         handleNewPage(page);
+        setPageLoaded(false);
     }
 
 
     return (
-
         <div className="products p-3">
-
-            {loadedImages < products.length && <Spinner />}
-
+            {!pageLoaded && <Spinner />}
             <div className='products-wrapper'>
                 {products.map((product, index) => {
                     return (
-                        <ProductCard key={index} product={product} onImageLoad={handleImageLoading} />
+                        <ProductCard key={index} product={product} />
                     )
                 })}
-
             </div>
-            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={onPageChange} />
+            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={updatePage} />
         </div>
     )
 }

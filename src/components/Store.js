@@ -71,7 +71,6 @@ export default function Store() {
                 {productData.products &&
                     <Products
                         products={productData.products}
-                        total={productData.total}
                         totalPages={productData.totalPages}
                         currentPage={page}
                         handleNewPage={handleNewPage}
