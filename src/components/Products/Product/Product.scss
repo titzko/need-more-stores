@@ -1,0 +1,39 @@
+@import "../../../App.scss";
+
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  color: $dark-blue;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-info {
+
+    margin-left: 12px;
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    .product-price {
+      color: $dark-blue;
+      font-weight: bold;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-color: $green;
+  }
+}

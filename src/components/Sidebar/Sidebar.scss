@@ -1,16 +1,12 @@
 @import "../../App.scss";
 
-$sidebar-background: white;
-$sidebar-shadow: rgba(0, 0, 0, 0.15);
-$sidebar-text: $medium-blue;
-$sidebar-hover: $green;
 
 .sidebar {
   grid-area: sidebar;
-  background-color: $sidebar-background;
+  background-color: white;
   padding: 10px;
-  color: $sidebar-text;
-  box-shadow: 0 0 10px 0 $sidebar-shadow;
+  color: $medium-blue;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 
   b {
     display: flex;
@@ -29,12 +25,12 @@ $sidebar-hover: $green;
       transition: color 0.2s;
 
       &:hover {
-        color: $sidebar-hover;
+        color: $green;
       }
     }
   }
 
   .hr {
-    border-top: 1px solid $sidebar-text;
+    border-top: 1px solid $medium-blue;
   }
 }
