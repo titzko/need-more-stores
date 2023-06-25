@@ -1,1 +1,0 @@
-// will contain all products in a grid

@@ -1,0 +1,21 @@
+@import "../../App.scss";
+
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $medium-blue;
+  color: $light-blue;
+
+  div {
+    transition: color 0.2s;
+
+    &:hover {
+      color: $green;
+      cursor: pointer;
+    }
+  }
+}

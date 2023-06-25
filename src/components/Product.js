@@ -1,1 +1,0 @@
-// will handle the display of a single product
