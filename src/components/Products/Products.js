@@ -14,7 +14,7 @@ export default function Products({ products, totalPages, currentPage, handleNewP
     useEffect(() => {
         setTimeout(() => {
             setPageLoaded(true);
-        }, 650)
+        }, 300)
 
     }, [pageLoaded]);
 
