@@ -8,27 +8,60 @@ import Footer from './Footer/Footer';
 import { createApi } from 'unsplash-js';
 import imageData from './unsplash-cache.json';
 
-import fetchProducts from './../api/fetchProducts';
+import { fetchProducts, fetchAllProducts } from './../api/fetchProducts';
 
 
 export default function Store() {
 
     const [productData, setProductData] = useState([]);
     const [page, setPage] = useState(1);
+    const [categories, setCategories] = useState([]);
+    const [currentCategory, setCurrentCategory] = useState("");
+    const [brands, setBrands] = useState([]);
+    const [currentBrand, setCurrentBrand] = useState("");
 
     const handleNewPage = (newPage) => {
         setPage(newPage);
     }
 
+
+    function updateCurrentCategory(updateCategory) {
+        setCurrentCategory(updateCategory);
+    }
+
+    function updateCurrentBrand(updateBrand) {
+        setCurrentBrand(updateBrand)
+    }
+
+    useEffect(() => {
+
+        const getSidebarInfos = async () => {
+            const response = await fetchAllProducts();
+
+            const allCategories = new Set();
+            const allBrands = new Set();
+            response.products.forEach(element => {
+                allCategories.add(element.category);
+                allBrands.add(element.brand);
+            })
+            setCategories(Array.from(allCategories));
+            setBrands(Array.from(allBrands));
+
+
+        }
+
+        getSidebarInfos();
+    }, [])
+
     useEffect(() => {
         const loadProducts = async () => {
-            const productData = await fetchProducts(page, (window.innerWidth < 1000 ? 4 : 9));
+            const productMetaData = await fetchProducts(page, (window.innerWidth < 1000 ? 4 : 9), currentCategory, currentBrand);
 
             const unsplash = createApi({
                 accessKey: process.env.REACT_APP_ACCESS_KEY,
             });
 
-            const promises = productData.products.map((singleProduct) => {
+            const promises = productMetaData.products.map((singleProduct) => {
                 const productName = singleProduct.product_name.split('-')[0].trim();
 
                 if (imageData[productName]) {
@@ -44,14 +77,15 @@ export default function Store() {
                         } else {
                             console.log(result.errors)
                             const imageUrl = "https://via.placeholder.com/150"
-                            return { ...singleProduct, ...{imageUrl} };
+                            return { ...singleProduct, ...{ imageUrl } };
                         }
                     });
                 }
             });
 
             Promise.all(promises).then(updatedProducts => {
-                setProductData({ ...productData, products: updatedProducts });
+                setProductData({ ...productMetaData, products: updatedProducts });
+
             }).catch((err) => {
                 console.log(err)
             });
@@ -59,7 +93,7 @@ export default function Store() {
         }
         loadProducts();
 
-    }, [page]);
+    }, [page, currentCategory, currentBrand]);
 
 
 
@@ -67,7 +101,14 @@ export default function Store() {
         <>
             <div className="products-page">
                 <Header />
-                <Sidebar />
+                <Sidebar
+                    categories={categories}
+                    brands={brands}
+                    updateCategoryFn={updateCurrentCategory}
+                    updateBrandFn={updateCurrentBrand}
+                    currentBrand={currentBrand}
+                    currentCategory={currentCategory}
+                />
                 {productData.products &&
                     <Products
                         products={productData.products}

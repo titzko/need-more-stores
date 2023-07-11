@@ -18,6 +18,11 @@
   ul {
     list-style-type: none;
     padding: 0;
+
+    .sidebar-selected {
+      text-decoration: underline;
+      color: darken($green, 40%);
+    }
     
     li {
       padding: 5px 0;

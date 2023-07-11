@@ -4,39 +4,42 @@ import { faTags, faTrademark, faDollarSign } from '@fortawesome/free-solid-svg-i
 import './Sidebar.scss';
 
 
-export default function Sidebar() {
+export default function Sidebar({ categories, brands, updateCategoryFn, updateBrandFn, currentCategory, currentBrand }) {
+
+
+
     return <div className="sidebar">
         <div className='py-3 px-4'>
-             <b><FontAwesomeIcon icon={faTags} /> Categories</b>
+            <b><FontAwesomeIcon icon={faTags} /> Categories</b>
             <ul>
-                <li>Category</li>
-                <li>Category</li>
-                <li>Category</li>
-                <li>Category</li>
-                <li>Category</li>
+                <li onClick={() => updateCategoryFn("")} className={!currentCategory ? "sidebar-selected" : ""}>
+                    All Categories
+                </li>
+                {categories.map((category, index) => {
+                    return (
+                        <li key={index} onClick={() => updateCategoryFn(category)} className={currentCategory === category ? "sidebar-selected" : ""}>
+                            {category}
+                        </li>
+                    )
+                })}
             </ul>
         </div>
         <hr className="hr" />
         <div className='py-3 px-4'>
-             <b><FontAwesomeIcon icon={faTrademark}  /> Brands</b>
+            <b><FontAwesomeIcon icon={faTrademark} /> Brands</b>
             <ul>
-                <li>Brand</li>
-                <li>Brand</li>
-                <li>Brand</li>
-                <li>Brand</li>
-                <li>Brand</li>
+                <li onClick={() => updateBrandFn("")} className={!currentBrand ? "sidebar-selected" : ""}>
+                    All Brands
+                </li>
+                {brands.map((brand, index) => {
+                    return (
+                        <li key={index} onClick={() => updateBrandFn(brand)} className={currentBrand === brand ? "sidebar-selected" : ""} >
+                            {brand}
+                        </li>
+                    )
+                })}
             </ul>
         </div>
         <hr className="hr" />
-        <div className='py-3 px-4'>
-             <b><FontAwesomeIcon icon={faDollarSign} /> Price</b>
-            <ul>
-                <li>0-10</li>
-                <li>10-25</li>
-                <li>25-50</li>
-                <li>50-100</li>
-                <li>100+</li>
-            </ul>
-        </div>
     </div>
 }
