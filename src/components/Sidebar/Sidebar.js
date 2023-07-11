@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTags, faTrademark, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faTags, faTrademark } from '@fortawesome/free-solid-svg-icons';
 
 import './Sidebar.scss';
 

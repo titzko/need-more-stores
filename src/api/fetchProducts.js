@@ -3,7 +3,7 @@ const PRODUCT_DATA_URL = 'https://titzko.github.io/public_api/data/product_data.
 
 async function fetchProducts(pageNumber, pageSize = 12, category, brand) {
     const response = await fetch(PRODUCT_DATA_URL);
-    let data = await response.json();
+    const data = await response.json();
 
 
 
