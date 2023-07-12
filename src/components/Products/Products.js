@@ -5,7 +5,7 @@ import ProductCard from './ProductCard/ProductCard';
 import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner';
 
-export default function Products({ products, totalPages, currentPage, handleNewPage }) {
+export default function Products({ products, totalPages, currentPage, handleNewPage, addToBasketFn }) {
 
 
     const [pageLoaded, setPageLoaded] = useState(false);
@@ -31,7 +31,7 @@ export default function Products({ products, totalPages, currentPage, handleNewP
             <div className='products-wrapper'>
                 {products.map((product, index) => {
                     return (
-                        <ProductCard key={index} product={product} />
+                        <ProductCard key={index} product={product} addToBasketFn={addToBasketFn} />
                     )
                 })}
             </div>

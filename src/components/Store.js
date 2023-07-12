@@ -5,8 +5,10 @@ import Products from './Products/Products';
 import Header from './Header/Header';
 import Sidebar from './Sidebar/Sidebar';
 import Footer from './Footer/Footer';
+import PurchasingDialog from './PurchasingDialog/PurchasingDialog';
 import { createApi } from 'unsplash-js';
 import imageData from './unsplash-cache.json';
+import Button from 'react-bootstrap/Button';
 
 import { fetchProducts, fetchAllProducts } from './../api/fetchProducts';
 
@@ -19,11 +21,13 @@ export default function Store() {
     const [currentCategory, setCurrentCategory] = useState("");
     const [brands, setBrands] = useState([]);
     const [currentBrand, setCurrentBrand] = useState("");
+    const [purchasingModalShow, setPurchasingModalShow] = useState(false);
+    const [purchasingProduct, setPurchasingProduct] = useState({});
+
 
     const handleNewPage = (newPage) => {
         setPage(newPage);
     }
-
 
     function updateCurrentCategory(updateCategory) {
         setCurrentCategory(updateCategory);
@@ -31,6 +35,12 @@ export default function Store() {
 
     function updateCurrentBrand(updateBrand) {
         setCurrentBrand(updateBrand)
+    }
+
+    const addToBasketFn = (productForBasket) => {
+        setPurchasingModalShow(true);
+        setPurchasingProduct(productForBasket)
+        console.log(productForBasket)
     }
 
     useEffect(() => {
@@ -100,6 +110,10 @@ export default function Store() {
     return (
         <>
             <div className="products-page">
+                <Button variant="primary" onClick={() => setPurchasingModalShow(true)}>
+                    Launch vertically centered modal
+                </Button>
+                <PurchasingDialog  show={purchasingModalShow}  onHide={() => setPurchasingModalShow(false)} product={purchasingProduct}/>
                 <Header />
                 <Sidebar
                     categories={categories}
@@ -115,6 +129,7 @@ export default function Store() {
                         totalPages={productData.totalPages}
                         currentPage={page}
                         handleNewPage={handleNewPage}
+                        addToBasketFn={addToBasketFn}
                     />
                 }
                 <Footer />

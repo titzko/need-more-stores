@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import './ProductCard.scss';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, addToBasketFn }) {
 
     const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/150';
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -12,12 +12,13 @@ export default function ProductCard({ product }) {
     }
     
     useEffect(() => {
+        console.log(product);
         setImageLoaded(false);
     }, [product]);
 
 
     return (
-        <div className="product d-flex">
+        <div className="product d-flex" onClick={() => addToBasketFn(product)}>
             <div>
                 <img 
                     src={PLACEHOLDER_IMAGE}
