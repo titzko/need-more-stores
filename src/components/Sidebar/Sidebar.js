@@ -8,7 +8,8 @@ export default function Sidebar({ categories, brands, updateCategoryFn, updateBr
 
 
 
-    return <div className="sidebar">
+    return
+    <div className="sidebar">
         <div className='py-3 px-4'>
             <b><FontAwesomeIcon icon={faTags} /> Categories</b>
             <ul>

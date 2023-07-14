@@ -23,5 +23,9 @@ Images are sourced using the [Unsplash-JS](https://github.com/unsplash/unsplash-
 
 ### Running the project
 
-To start the React app, use the command:
+To start the React app, use the command: 
+> npm run start
+
 If you want to use the unsplash api yourself, you need to create the .env file and add your credentials
+
+Note that this project is not done. Also there are some things in the project which are no longer needed like json-server
