@@ -28,12 +28,12 @@ export default function Store() {
         setPage(newPage);
     }
 
-    function updateCurrentCategory(updateCategory) {
+    const updateCurrentCategory = (updateCategory) => {
         setCurrentCategory(updateCategory);
         setPage(1);
     }
 
-    function updateCurrentBrand(updateBrand) {
+    const updateCurrentBrand = (updateBrand) => {
         setCurrentBrand(updateBrand)
         setPage(1);
     }
