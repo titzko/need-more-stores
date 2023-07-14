@@ -23,7 +23,9 @@ Images are sourced using the [Unsplash-JS](https://github.com/unsplash/unsplash-
 
 ### Running the project
 
-To start the React app, use the command: 
+Find a running instance [here](https://titzko.github.io/need-more-stores/) 
+
+To start the React app locally, use the command: 
 > npm run start
 
 If you want to use the unsplash api yourself, you need to create the .env file and add your credentials
