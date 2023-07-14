@@ -24,11 +24,14 @@ function BasketDialog({ onHide, show, basket, removeFromBasketFn }) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
+
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     Checkout
                 </Modal.Title>
             </Modal.Header>
+
+
             <Modal.Body>
                 <div>
                     {(basket.size > 0) ?
@@ -56,6 +59,8 @@ function BasketDialog({ onHide, show, basket, removeFromBasketFn }) {
                         <><div>Maybe pick something to buy first...</div></>}
                 </div>
             </Modal.Body>
+
+            
             <Modal.Footer>
                 <Button disabled={basket.size === 0} onClick={() => alert("maybe some day will implement smth here")} >Buy now!</Button>
                 <Button className='btn btn-secondary' onClick={onHide}>Close</Button>

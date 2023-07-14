@@ -9,7 +9,7 @@ export default function Footer() {
     return (
         <div className="footer">
             <div>Made by Titzko</div>
-            <div><FontAwesomeIcon icon={faGithub} /> <span className='no-display-mobile'>Github</span></div>
+            <a href='https://github.com/titzko/need-more-stores'><FontAwesomeIcon icon={faGithub} /> <span className='no-display-mobile'>Github</span></a>
             <div><span className='no-display-mobile'>Contact: </span>matitzko@gmail.com</div>
         </div>
     )

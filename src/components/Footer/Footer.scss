@@ -10,10 +10,13 @@
   background-color: $medium-blue;
   color: $light-blue;
 
-  div {
+  div, a {
     transition: color 0.2s;
+    text-decoration: none;
+    color: inherit; 
 
-    &:hover {
+
+    a:hover {
       color: $green;
       cursor: pointer;
     }
