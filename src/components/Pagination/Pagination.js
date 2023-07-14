@@ -30,7 +30,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
                 <div className='nav-btn' onClick={() => { handlePreviousClick() }}>
                     <FontAwesomeIcon icon={faChevronLeft} /><span className='no-display-mobile'> Previous</span>
                 </div>
-                
+
                 {Array.from(Array(totalPages).keys()).map((element, index) => {
                     return (
                         <div className={'nav-btn no-display-mobile' + ((currentPage === element + 1) ? ' current-page-btn' : '')}

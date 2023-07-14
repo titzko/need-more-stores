@@ -19,13 +19,37 @@
     display: flex;
     gap: 10px;
 
-    li {
+
+    .header-btn {
+      position: relative;
+    }
+
+    .header-btn::after {
+      content: attr(data-basket-amount);
+      position: absolute;
+      top: -6px; /* Adjust these values as needed */
+      right: -6px;
+      width: 20px; /* Adjust to suit your design */
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      color: white !important;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      margin-right: 2px;
+  }
+
+    li,
+    button {
       text-decoration: none;
       color: $light-blue;
       transition: color 0.2s;
       list-style-type: none;
       padding: 6px 12px;
       font-size: 18px;
+      background-color: transparent;
+      border: none;
 
       &:hover {
         color: $green;
@@ -41,7 +65,8 @@
       font-size: 18px;
     }
 
-    .nav-links li {
+    .nav-links li,
+    .nav-links button {
       font-size: 14px;
     }
   }

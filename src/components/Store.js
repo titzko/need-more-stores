@@ -8,7 +8,6 @@ import Footer from './Footer/Footer';
 import PurchasingDialog from './PurchasingDialog/PurchasingDialog';
 import { createApi } from 'unsplash-js';
 import imageData from './unsplash-cache.json';
-import Button from 'react-bootstrap/Button';
 
 import { fetchProducts, fetchAllProducts } from './../api/fetchProducts';
 
@@ -23,7 +22,7 @@ export default function Store() {
     const [currentBrand, setCurrentBrand] = useState("");
     const [purchasingModalShow, setPurchasingModalShow] = useState(false);
     const [purchasingProduct, setPurchasingProduct] = useState({});
-
+    const [basket, setBasket] = useState(new Map());
 
     const handleNewPage = (newPage) => {
         setPage(newPage);
@@ -31,17 +30,40 @@ export default function Store() {
 
     function updateCurrentCategory(updateCategory) {
         setCurrentCategory(updateCategory);
+        setPage(1);
     }
 
     function updateCurrentBrand(updateBrand) {
         setCurrentBrand(updateBrand)
+        setPage(1);
     }
 
-    const addToBasketFn = (productForBasket) => {
+    const openPurchasingDialog = (productForBasket) => {
         setPurchasingModalShow(true);
         setPurchasingProduct(productForBasket)
-        console.log(productForBasket)
     }
+
+
+    const removeFromBasketFn = (product) => {
+        let newBasket = new Map(basket);
+        newBasket.delete(product);
+        setBasket(newBasket);
+    }
+
+
+
+
+    const addProductToBasket = (product, amount) => {
+        let newBasket = new Map(basket);
+
+        if (newBasket.has(product)) {
+            newBasket.set(product, newBasket.get(product) + amount);
+        } else {
+            newBasket.set(product, amount);
+        }
+
+        setBasket(newBasket);
+    };
 
     useEffect(() => {
 
@@ -110,11 +132,13 @@ export default function Store() {
     return (
         <>
             <div className="products-page">
-                <Button variant="primary" onClick={() => setPurchasingModalShow(true)}>
-                    Launch vertically centered modal
-                </Button>
-                <PurchasingDialog  show={purchasingModalShow}  onHide={() => setPurchasingModalShow(false)} product={purchasingProduct}/>
-                <Header />
+                <PurchasingDialog
+                    show={purchasingModalShow}
+                    onHide={() => setPurchasingModalShow(false)}
+                    product={purchasingProduct}
+                    addProductToBasket={addProductToBasket}
+                />
+                <Header basket={basket} removeFromBasketFn={removeFromBasketFn} />
                 <Sidebar
                     categories={categories}
                     brands={brands}
@@ -129,7 +153,7 @@ export default function Store() {
                         totalPages={productData.totalPages}
                         currentPage={page}
                         handleNewPage={handleNewPage}
-                        addToBasketFn={addToBasketFn}
+                        openPurchasingDialog={openPurchasingDialog}
                     />
                 }
                 <Footer />

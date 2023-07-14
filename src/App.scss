@@ -7,21 +7,20 @@ $green: #A2FF86;
   display: grid;
   grid-template-columns: 1fr 7fr;
   grid-template-rows: 4fr 24fr 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "header header"
     "sidebar products"
     "footer footer";
 
-    height: 100vh;
-  
-}
+  height: 100vh;
 
+}
 
 @media (max-width: 769px) {
   .products-page {
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 16fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "header"
       "products"
       "footer";

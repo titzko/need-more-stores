@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import './ProductCard.scss';
 
-export default function ProductCard({ product, addToBasketFn }) {
+export default function ProductCard({ product, openPurchasingDialog }) {
 
     const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/150';
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -10,24 +10,23 @@ export default function ProductCard({ product, addToBasketFn }) {
     const handleImageLoad = () => {
         setImageLoaded(true);
     }
-    
+
     useEffect(() => {
-        console.log(product);
         setImageLoaded(false);
     }, [product]);
 
 
     return (
-        <div className="product d-flex" onClick={() => addToBasketFn(product)}>
+        <div className="product d-flex" onClick={() => openPurchasingDialog(product)}>
             <div>
-                <img 
+                <img
                     src={PLACEHOLDER_IMAGE}
-                    style={{display: imageLoaded ? "none" : "block"}}
+                    style={{ display: imageLoaded ? "none" : "block" }}
                     alt={product.name}
                 />
-                <img 
+                <img
                     src={product.imageUrl}
-                    style={{display: imageLoaded ? "block" : "none"}}
+                    style={{ display: imageLoaded ? "block" : "none" }}
                     onLoad={handleImageLoad}
                     onError={handleImageLoad}
                     alt={product.name}

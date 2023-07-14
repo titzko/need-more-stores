@@ -6,7 +6,7 @@ import './Footer.scss';
 export default function Footer() {
 
 
-    return(
+    return (
         <div className="footer">
             <div>Made by Titzko</div>
             <div><FontAwesomeIcon icon={faGithub} /> <span className='no-display-mobile'>Github</span></div>
