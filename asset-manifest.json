@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/need-more-stores/static/css/main.f0e46d4b.css",
+    "main.js": "/need-more-stores/static/js/main.0c6df926.js",
+    "static/js/787.df701640.chunk.js": "/need-more-stores/static/js/787.df701640.chunk.js",
+    "index.html": "/need-more-stores/index.html",
+    "main.f0e46d4b.css.map": "/need-more-stores/static/css/main.f0e46d4b.css.map",
+    "main.0c6df926.js.map": "/need-more-stores/static/js/main.0c6df926.js.map",
+    "787.df701640.chunk.js.map": "/need-more-stores/static/js/787.df701640.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0e46d4b.css",
+    "static/js/main.0c6df926.js"
+  ]
+}
